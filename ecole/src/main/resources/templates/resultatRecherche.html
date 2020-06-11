@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th=" https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css">
+<title>resultat</title>
+</head>
+<body>
+ <div>
+		<button type="button" class="btn btn-primary"  onclick="window.location.href = 'http://localhost:8080/';">Accueil</button>
+		
+	</div>
+
+	<h2>Resultat recherche par mot clef</h2>
+	<form th:action="@{recherche}">
+		<label>Mot clé   </label><input type="text" name="mc" th:value="${mc}" >
+		
+		<input type="submit" value="chercher" >
+	</form>
+ <table class="table" >
+	<tr><th>ID</th><th>NOM</th><th>BRANCHE</th>	</tr>
+ 	<tr  th:each="etu:${etudiants}">
+ 	<td  th:text="${etu.id}"></td>
+ 	<td  th:text="${etu.nom}"></td>
+ 	<td  th:text="${etu.branche}"></td>
+    </tr>
+ </table>
+
+</body>
+</html>

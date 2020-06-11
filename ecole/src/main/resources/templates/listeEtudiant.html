@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th=" https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>liste de tous les etudiants</title>
+<link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<script type="text/javascript"   src="../static/test.js"  th:src="@{/test.js}"></script>
+
+</head>
+<body>
+ <div>
+		<button type="button" class="btn btn-primary"  onclick="window.location.href = 'http://localhost:8080/';">Accueil</button>
+		
+	</div>
+<div class="container mt-5" >
+<div class="card">
+<div class="card-header text-center font-weight-bold  h2">Liste des etudiants</div>
+<div class="card-body">
+	<table class="table table-striped" >
+	<tr><th>ID</th><th>NOM</th><th>BRANCHE</th>	</tr>
+ 	<tr  th:each="etu:${etudiants}">
+ 	<td  th:text="${etu.id}"></td>
+ 	<td  th:text="${etu.nom}"></td>
+ 	<td  th:text="${etu.branche}"></td>
+ 	<td><a onclick="javascript: return  confirm('Etes vous sûr de supprimer?');"   class="btn btn-danger" th:href="@{deleteEtudiant(id=${etu.id})}">Supprimer</a></td>
+ 	
+    </tr>
+ </table>
+	
+</div>
+</div>
+</div>
+
+</body>
+</html>
