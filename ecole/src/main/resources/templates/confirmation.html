@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="template0">
+<head>
+<meta charset="utf-8">
+
+<title>Forme etudiant</title>
+</head>
+<body>
+	<div layout:fragment="pageContent">
+	
+	<div class="container mt-5">
+	<div class="col-md-6">
+	<div class="card">
+	<div class="card-header">Enregistrement effectué avec succès!</div>
+	<div class="card-body">
+	<div class="form-group">
+		<label>ID:    </label>
+		<label class="font-weight-bold" th:text="${etudiant.id}"></label>
+	</div>
+	
+	<div class="form-group">
+		<label>Nom:     </label>
+		<label class="font-weight-bold" th:text="${etudiant.name}"></label>
+	</div>
+	<div class="form-group">
+		<label>Date de naissance:     </label>
+		<label class="font-weight-bold" th:text="${etudiant.dateNaissance}"></label>
+	</div>
+	<div class="form-group">
+		<label>Vaccin:     </label>
+		<label class="font-weight-bold" th:text="${etudiant.vaccin}"></label>
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	
+</body>
+</html>
