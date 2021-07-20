@@ -28,7 +28,8 @@
 						<th>NOM</th>
 						<th>DATENAISSANCE</th>
 						<th>VACCIN</th>
-						<th sec:authorize="hasRole('ROLE_ADMIN')">ACTION</th>
+						<th  sec:authorize="hasRole('ROLE_ADMIN')">EDITION</th>
+						<th sec:authorize="hasRole('ROLE_ADMIN')">SUPPRISSION</th>
 					</tr>
 					<tr th:each="p:${etudiants}">
 						<td th:text="${p.id}"></td>
