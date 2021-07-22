@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/save**/**","/delete**/**","/form**/**,/admin/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/etudiants**/**").hasRole("USER");
 		
-		http.authorizeRequests().antMatchers("/user/**","/login","/webjars/**").permitAll();
+		http.authorizeRequests().antMatchers("/user/**","/login","/webjars/**","/css/**","/home").permitAll();
 		http.authorizeRequests().anyRequest().authenticated();
 		//http.csrf().disable();
 		http.exceptionHandling().accessDeniedPage("/notAuthorized");

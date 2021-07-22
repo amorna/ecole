@@ -63,4 +63,10 @@ public String editEtudiant(Model model,Long id ) {
 	model.addAttribute("mode","edit");
 	return "formEtudiant";
 }
+@GetMapping("/home")
+public String home() {
+	return "home";
+}
+
+	
 }
