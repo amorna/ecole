@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,13 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amorna.ecole.dao.EtudiantRepository;
 import com.amorna.ecole.entities.Etudiant;
-
+import com.amorna.ecole.entities.User;
+import com.amorna.ecole.dao.UserRepository;
 
 
 @Controller
 public class EtudiantController {
 	@Autowired
 	private EtudiantRepository etudiantRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 
 
@@ -67,6 +71,24 @@ public String editEtudiant(Model model,Long id ) {
 public String home() {
 	return "home";
 }
-
+@GetMapping("/register")
+public String showRegistrationForm(Model model) {
+    model.addAttribute("user", new User());
+     
+    return "register";
+}
+@PostMapping("/progister")
+public String processRegister(Model model,User user) {
+	
+	
+	  BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	  String encodedPassword = passwordEncoder.encode(user.getPassword());
+	  user.setPassword(encodedPassword);
+	 
+	  userRepository.save(user);
+     model.addAttribute("user", user);
+       
+    return "etudiants";
+}
 	
 }
